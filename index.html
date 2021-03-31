@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Calculadora de IMC</title>
+    <style type="text/css">
+      body{
+        background:#008080;
+        color: #FFFFFF
+      }
+      
+      header{
+        text-align: center;
+        font-size: 15pt;
+        font-family: Arial Black;
+      }      
+      section{
+        background: #D2691E;
+        text-align: center;
+        width: 25%;
+        padding: 5px;
+        margin: auto;
+        font-size: 15pt;
+        font-family: Arial;
+        border-radius: 10px;
+      }
+      input{
+        width:45%;
+        height:25px;
+        border-radius: 5px;
+        border: white;
+      }
+      #buttonCalculate, #buttonRemake{
+        width:25%;
+        font-weight: 900;
+        font-family: Arial Black;
+        background: #FFFFFF
+      }
+      #buttonCalculate:hover{
+        cursor: pointer;
+      }
+      #buttonRemake{
+        cursor: pointer
+      }
+      #view{
+        height:50px;
+        width: 75%;
+      }
+      #altura, #peso, #view{
+        text-align: center;
+        font: Arial;
+        font-weight: 900;
+        font-size: 75%;
+      }
+      footer{
+        text-align: center;
+        font-family: Arial;
+        width: 100%;
+        bottom: 0;
+        font-weight: 400;
+      }
+    </style>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <header>
+      <h2>Calculadora de IMC</h2>
+    </header>
+    <section>
+      <div id="data">
+      <p>Altura:</br><input type="number" id="altura" value=""> m<p>
+      <p>Peso:</br><input type="number" id="peso" value=""> kg<p>
+     </div>
+       </br>
+     <div id="return">
+      <p><input type="button" id="buttonCalculate" value="Calcular" onclick="calculate()"</p>
+      <p><input type="button" id="buttonRemake" value="Refazer" onclick="remake()"</p>
+      <p>Resultado:</br><input type="text" id="view" value=""><p>
+      </div>
+    </section>
+    <footer>
+      <p>&copy;RodrigoMoreira</p>
+    </footer>
+    <script type="text/javascript">      
+      function calculate(){
+        
+        var altura = document.getElementById("altura").value.toLocaleString();        
+        var peso = document.getElementById("peso").value.toLocaleString();
+        var altura2 = (altura*altura).toFixed(4);
+        var calculo = (peso/altura2).toFixed(2); 
+       
+        if(calculo < 18.50) {
+          document.getElementById("view").value = calculo + " - Abaixo do Peso";
+        }else if(calculo >= 18.50 && calculo<= 24.90) {
+          document.getElementById("view").value = calculo + " - Peso Normal";
+        }else if(calculo >= 25.00 && calculo<= 29.90) {
+          document.getElementById("view").value = calculo + " - Sobrepeso";
+        }else if(calculo >= 30.00 && calculo<= 34.90) {
+          document.getElementById("view").value = calculo + " - Obesidade Grau I";
+        }else if(calculo >= 35.00 && calculo<= 39.90) {
+          document.getElementById("view").value = calculo + " - Obesidade Grau II";
+        }else if(calculo > 40){
+          document.getElementById("view").value = calculo + " - Obesidade Grau III";
+        }else{
+          document.getElementById("view").value = "";
+        };        
+      };
+      function remake(){
+        document.getElementById("view").value = "";
+        document.getElementById("altura").value = "";
+        document.getElementById("peso").value = ""    
+      };
+    </script>
+  </body>
+
